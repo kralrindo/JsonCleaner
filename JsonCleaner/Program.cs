@@ -48,8 +48,8 @@ class Program
 		}
 
 		// Find duplicate paths
-		var seen = new HashSet<string>();
-		var duplicatePaths = new HashSet<string>();
+		var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+		var duplicatePaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 		var duplicates = new List<JToken>();
 
 		foreach (var file in filesToken)
@@ -99,8 +99,8 @@ class Program
 		int braceDepth = 0;
 		int currentObjectStart = -1;
 		string currentPath = null;
-		var pathsToRemove = new HashSet<string>(duplicatePaths);
-		var seenPaths = new HashSet<string>();
+		var pathsToRemove = new HashSet<string>(duplicatePaths, StringComparer.OrdinalIgnoreCase);
+		var seenPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 		var linesToRemove = new HashSet<int>();
 
 		for (int i = 0; i < lines.Length; i++)
